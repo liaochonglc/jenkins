@@ -15,3 +15,19 @@ config里面必须配置
 <role rolename="manager-script"/>
 
   <user username="admin" password="a123456" roles="manager-gui,manager-script"/>
+这是运行脚本的
+
+project=wherebuyAPI.war
+aidDir="/tmp/bak/wherebuyAPI_`date +%Y%m%d%H`"
+resourceDir=/var/lib/tomcat8/webapps
+#---------------- 正在创建备份目录 ----------------
+ sudo mkdir -p $aidDir/
+#---------------- 正在备份项目 ----------------------
+sudo systemctl stop tomcat8
+@echo sudo cp -r  $resourceDir/$project $aidDir/
+sudo cp -r  $resourceDir/$project $aidDir/
+sudo rm -rf $resourceDir/$project 
+#---------------- 正在部署项目 ----------------------
+sudo cp -r  $project $resourceDir
+sudo rm -rf $project
+sudo systemctl start tomcat8
