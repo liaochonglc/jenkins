@@ -1,0 +1,17 @@
+首先下载tomcat 配置maven环境变量 
+配置里面使用丢弃旧的构建
+选择git 或者subversion 注意svn要加@HEAD git的不用 Credentials是用户名和密码 Quiet check-out打钩 源码库浏览器使用自动
+构建触发器
+使用轮询SCM 日程表 30 21 * * 1-7
+
+构建环境
+Delete workspace before build starts
+构建
+调用顶层maven目标 用自己的maven版本 目标clean install 里面的pom选择的是项目里面的pom.xml 配置文件是settings.xml 第二个调用maven目标 目标是clean package pom依旧是项目里面的pom.xml如linsheng.app/pom.xml
+注意的是tomcat配置
+config里面必须配置
+<role rolename="manager-gui"/> 
+
+<role rolename="manager-script"/>
+
+  <user username="admin" password="a123456" roles="manager-gui,manager-script"/>
