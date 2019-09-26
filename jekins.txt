@@ -31,3 +31,7 @@ sudo rm -rf $resourceDir/$project
 sudo cp -r  $project $resourceDir
 sudo rm -rf $project
 sudo systemctl start tomcat8
+
+
+一个jekins邮件通知的博客链接:
+https://www.jianshu.com/p/1d888d1bff73
